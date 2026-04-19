@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Landing Page</title>
+
+<!-- Lottie Animation -->
+<script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
+<style>
+
+/* ===== GENERAL ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #0f172a, #1e293b);
+  color: white;
+}
+
+/* ===== LANDING SECTION ===== */
+#home {
+  height: 100vh;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 80px 8%;
+}
+
+/* TEXT SIDE */
+.landing-content {
+  max-width: 500px;
+}
+
+#home h1 {
+  font-size: 50px;
+}
+
+.name-white { color: white; }
+.name-blue { color: #38bdf8; }
+
+#home h2 {
+  margin-top: 10px;
+  color: #38bdf8;
+}
+
+.tagline {
+  margin-top: 10px;
+  color: #cbd5f5;
+}
+
+.about-short {
+  margin-top: 15px;
+  line-height: 1.5;
+  color: #e2e8f0;
+}
+
+/* BUTTON */
+.explore-btn {
+  margin-top: 20px;
+  padding: 10px 18px;
+  background: #38bdf8;
+  border: none;
+  border-radius: 20px;
+  color: black;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.explore-btn:hover {
+  background: #0ea5e9;
+}
+
+.explore-btn:active {
+  transform: scale(0.95);
+}
+
+/* ANIMATION */
+.landing-animation {
+  width: 420px;
+}
+
+lottie-player {
+  width: 100%;
+}
+
+/* MOBILE */
+@media (max-width: 900px) {
+  #home {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .landing-animation {
+    margin-top: 20px;
+    width: 300px;
+  }
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- LANDING PAGE -->
+<section id="home">
+
+  <div class="landing-content">
+
+    <h1>
+      <span class="name-white">Shubhiksha</span>
+      <span class="name-blue"> Dhangar</span>
+    </h1>
+
+    <h2>Front-End Developer</h2>
+
+    <p class="tagline">
+      Designing clean, modern and user-friendly web experiences ✨
+    </p>
+
+    <p class="about-short">
+      I am a Computer Application student passionate about building
+      responsive and interactive websites using modern technologies.
+    </p>
+
+    <!-- BUTTON NOW OPENS PORTFOLIO PAGE -->
+    <button class="explore-btn" onclick="openPortfolio()">
+      Explore Me
+    </button>
+
+  </div>
+
+  <!-- NEW CARTOON ANIMATION -->
+  <div class="landing-animation">
+    <lottie-player 
+      src="https://assets10.lottiefiles.com/packages/lf20_3rwasyjy.json"
+      background="transparent"
+      speed="1"
+      loop
+      autoplay>
+    </lottie-player>
+  </div>
+
+</section>
+
+<script>
+function openPortfolio() {
+  window.location.href = "index.html"; // change if needed
+}
+</script>
+
+</body>
+</html>
