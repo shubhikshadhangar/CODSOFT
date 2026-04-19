@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Calculator</title>
+
+<style>
+
+/* ===== THEME ===== */
+:root {
+  --bg: #030404;
+  --calc-bg: rgba(255,255,255,0.05);
+  --text: white;
+  --btn: #1e293b;
+  --accent: #38bdf8;
+}
+
+body.light {
+  --bg: #f1f5f9;
+  --calc-bg: white;
+  --text: black;
+  --btn: #e2e8f0;
+  --accent: #2563eb;
+}
+
+/* ===== BODY ===== */
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background: var(--bg);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  color: var(--text);
+}
+
+/* ===== CALCULATOR ===== */
+.calculator {
+  position: relative;
+  background: var(--calc-bg);
+  backdrop-filter: blur(12px);
+  padding: 20px;
+  border-radius: 20px;
+  width: 320px;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+}
+
+/* ===== SETTINGS ICON ===== */
+.settings-btn {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  font-size: 20px;
+  cursor: pointer;
+}
+
+/* ===== SETTINGS LIST ===== */
+.settings-list {
+  position: absolute;
+  top: 40px;
+  left: 10px;
+  background: var(--calc-bg);
+  backdrop-filter: blur(10px);
+  padding: 10px 15px;
+  border-radius: 10px;
+  display: none;
+}
+
+.settings-list.show {
+  display: block;
+}
+
+/* BULLET STYLE */
+.settings-list ul {
+  padding-left: 18px;
+}
+
+.settings-list li {
+  margin-bottom: 10px;
+}
+
+/* ===== DISPLAY ===== */
+.display {
+  width: 100%;
+  height: 90px;
+  font-size: 36px;
+  text-align: right;
+  border: none;
+  background: transparent;
+  color: var(--text);
+  margin-bottom: 20px;
+}
+
+/* ===== BUTTONS ===== */
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  padding: 18px;
+  border-radius: 50%;
+  border: none;
+  background: var(--btn);
+  color: var(--text);
+  font-size: 18px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+button:hover {
+  box-shadow: 0 0 10px var(--accent);
+}
+
+button:active {
+  transform: scale(0.9);
+}
+
+.equal {
+  background: var(--accent);
+  color: black;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="calculator">
+    <h4><center>Calculator</center></h4>
+
+  <!-- ⚙️ ICON -->
+  <div class="settings-btn" onclick="toggleSettings()">⚙️</div>
+
+  <!-- SETTINGS LIST -->
+  <div class="settings-list" id="settingsList">
+    <ul>
+      <li>
+        <label>
+          <input type="checkbox" onchange="toggleTheme()"> Light Mode
+        </label>
+      </li>
+    </ul>
+  </div>
+
+  <!-- DISPLAY -->
+  <input type="text" id="display" class="display" disabled>
+
+  <!-- BUTTONS -->
+  <div class="buttons">
+
+    <button onclick="press('C')">C</button>
+    <button onclick="press('DEL')">⌫</button>
+    <button onclick="press('%')">%</button>
+    <button onclick="press('/')">÷</button>
+
+    <button onclick="press('7')">7</button>
+    <button onclick="press('8')">8</button>
+    <button onclick="press('9')">9</button>
+    <button onclick="press('*')">×</button>
+
+    <button onclick="press('4')">4</button>
+    <button onclick="press('5')">5</button>
+    <button onclick="press('6')">6</button>
+    <button onclick="press('-')">−</button>
+
+    <button onclick="press('1')">1</button>
+    <button onclick="press('2')">2</button>
+    <button onclick="press('3')">3</button>
+    <button onclick="press('+')">+</button>
+
+    <button onclick="press('0')">0</button>
+    <button onclick="press('.')">.</button>
+    <button class="equal" onclick="press('=')">=</button>
+
+  </div>
+
+</div>
+
+<script>
+
+let display = document.getElementById("display");
+
+/* ===== CALCULATOR ===== */
+function press(value) {
+  if (value === "C") display.value = "";
+  else if (value === "DEL") display.value = display.value.slice(0, -1);
+  else if (value === "=") {
+    try {
+      display.value = eval(display.value);
+    } catch {
+      display.value = "Error";
+    }
+  }
+  else display.value += value;
+}
+
+/* ===== SETTINGS TOGGLE ===== */
+function toggleSettings() {
+  document.getElementById("settingsList").classList.toggle("show");
+}
+
+/* ===== THEME ===== */
+function toggleTheme() {
+  document.body.classList.toggle("light");
+}
+
+</script>
+
+</body>
+</html>
